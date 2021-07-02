@@ -1,4 +1,4 @@
-![BESA logo](https://www.besa.de/wp-content/uploads/2014/05/pre_logo.jpeg)
+[![BESA logo](https://www.besa.de/wp-content/uploads/2014/05/pre_logo.jpeg)](https://www.besa.de/)
 
 # BESA-Matlab-Readers
 
