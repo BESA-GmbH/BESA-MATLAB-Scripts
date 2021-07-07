@@ -1,5 +1,4 @@
 function swf = readBESAswf(filename)
-
 % readBESAswf read all information from an *.swf file
 %
 % Note that the *.swf file must contain waveforms in rows and not in
@@ -13,6 +12,23 @@ function swf = readBESAswf(filename)
 %   Time: array of sampled time instants
 %   wavename: Labels of the different sources
 %   data: matrix of data points [Number of sources x Npts]
+
+% Copyright (C) 2021, BESA GmbH
+%
+% This file is part of BESA2MATLAB.
+%
+%    BESA2MATLAB is free software: you can redistribute it and/or modify
+%    it under the terms of the GNU General Public License as published by
+%    the Free Software Foundation, either version 3 of the License, or
+%    (at your option) any later version.
+%
+%    BESA2MATLAB is distributed in the hope that it will be useful,
+%    but WITHOUT ANY WARRANTY; without even the implied warranty of
+%    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+%    GNU General Public License for more details.
+%
+%    You should have received a copy of the GNU General Public License
+%    along with BESA2MATLAB. If not, see <http://www.gnu.org/licenses/>.
 %
 % Modified April 26, 2006 Robert Oostenveld
 % Modified June 27, 2006 Karsten Hoechstetter: Function reads now both

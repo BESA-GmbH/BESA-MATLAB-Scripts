@@ -1,5 +1,4 @@
 function image = readBESAimage(filename)
-
 % readBESAimage reads information from exported BESA images (Beamformer, 
 % LAURA, sLORETA, swLORETA, LORETA, sSLOFO, User-Defined image, surface 
 % minimum norm, Probe scan, Sensitivity). The function poutput is a struct
@@ -8,6 +7,23 @@ function image = readBESAimage(filename)
 % Use as
 %   image = readBESAimage(filename)
 
+% Copyright (C) 2021, BESA GmbH
+%
+% This file is part of BESA2MATLAB.
+%
+%    BESA2MATLAB is free software: you can redistribute it and/or modify
+%    it under the terms of the GNU General Public License as published by
+%    the Free Software Foundation, either version 3 of the License, or
+%    (at your option) any later version.
+%
+%    BESA2MATLAB is distributed in the hope that it will be useful,
+%    but WITHOUT ANY WARRANTY; without even the implied warranty of
+%    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+%    GNU General Public License for more details.
+%
+%    You should have received a copy of the GNU General Public License
+%    along with BESA2MATLAB. If not, see <http://www.gnu.org/licenses/>.
+%
 % Modified April 26, 2006 Robert Oostenveld
 % Modified November 6, 2006 Karsten Hoechstetter
 % Modified January 2, 2008 Karsten Hoechstetter

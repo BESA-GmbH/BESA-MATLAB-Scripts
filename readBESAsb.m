@@ -1,5 +1,4 @@
 function [time,data,nEpochs] = readBESAsb(filename)
-
 % readBESAsb reads information from a *.dat, i.e. a simple binary data file
 %
 % This function requires a file with the same basename as the data name but
@@ -17,6 +16,23 @@ function [time,data,nEpochs] = readBESAsb(filename)
 %         of samples within one epoch
 %   nEpochs (optional): The number of epochs contained in the file
 
+% Copyright (C) 2021, BESA GmbH
+%
+% This file is part of BESA2MATLAB.
+%
+%    BESA2MATLAB is free software: you can redistribute it and/or modify
+%    it under the terms of the GNU General Public License as published by
+%    the Free Software Foundation, either version 3 of the License, or
+%    (at your option) any later version.
+%
+%    BESA2MATLAB is distributed in the hope that it will be useful,
+%    but WITHOUT ANY WARRANTY; without even the implied warranty of
+%    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+%    GNU General Public License for more details.
+%
+%    You should have received a copy of the GNU General Public License
+%    along with BESA2MATLAB. If not, see <http://www.gnu.org/licenses/>.
+%
 % Modified February 21, 2007 Karsten Hoechstetter
 % Modified April 24, 2007 Robert Oostenveld
 % Modified September 24, 2009 Karsten Hoechstetter

@@ -1,5 +1,4 @@
 function [Nodes IndicesNeighbourNodes] = readBESAloc(filename)
-
 % readBESAloc reads the source space grid nodes the BESA *.loc file format.
 % The coordinates of the source space nodes and a matrix defining the 
 % neighbouring nodes are returned.
@@ -21,10 +20,23 @@ function [Nodes IndicesNeighbourNodes] = readBESAloc(filename)
 %         contains first the potentials for sources at all nodes in x-dir,
 %         then for sources at all nodes in y-dir, and finally for all
 %         nodes in z-dir.
+
+% Copyright (C) 2021, BESA GmbH
 %
-% Copyright (C) 2013, BESA GmbH
+% This file is part of BESA2MATLAB.
 %
-% File name: readBESAlft.m
+%    BESA2MATLAB is free software: you can redistribute it and/or modify
+%    it under the terms of the GNU General Public License as published by
+%    the Free Software Foundation, either version 3 of the License, or
+%    (at your option) any later version.
+%
+%    BESA2MATLAB is distributed in the hope that it will be useful,
+%    but WITHOUT ANY WARRANTY; without even the implied warranty of
+%    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+%    GNU General Public License for more details.
+%
+%    You should have received a copy of the GNU General Public License
+%    along with BESA2MATLAB. If not, see <http://www.gnu.org/licenses/>.
 %
 % Author: Benjamin Lanfer/Robert Spangler
 % Created: 2013-11-27

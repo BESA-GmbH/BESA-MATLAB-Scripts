@@ -1,8 +1,7 @@
 function sensor = readBESApos(filename, type)
-
 % readBESApos read sensor information from a *.pos file. BESA stores
 % magnetometer information in *.pmg, and gradiometer information in *.pos,
-% however BESA Research doesn’t mind which extension is used, the
+% however BESA Research doesn't mind which extension is used, the
 % distinction between gradiometers and magnetometers is based on the number
 % of values on each line in the file.
 % Brief format description:
@@ -37,10 +36,23 @@ function sensor = readBESApos(filename, type)
 %                               primary sensor & location of secondary
 %                               sensor) for gradiometers.
 %               Orientations:   Orientations of each sensor.
-% 
+
 % Copyright (C) 2014, BESA GmbH
 %
-% File name: readBESApos.m
+% This file is part of BESA2MATLAB.
+%
+%    BESA2MATLAB is free software: you can redistribute it and/or modify
+%    it under the terms of the GNU General Public License as published by
+%    the Free Software Foundation, either version 3 of the License, or
+%    (at your option) any later version.
+%
+%    BESA2MATLAB is distributed in the hope that it will be useful,
+%    but WITHOUT ANY WARRANTY; without even the implied warranty of
+%    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+%    GNU General Public License for more details.
+%
+%    You should have received a copy of the GNU General Public License
+%    along with BESA2MATLAB. If not, see <http://www.gnu.org/licenses/>.
 %
 % Author: Robert Spangler
 % Created: 2014-01-08

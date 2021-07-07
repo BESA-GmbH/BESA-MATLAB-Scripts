@@ -13,10 +13,23 @@ function besa_channels = load2besa_channels(filename)
 %         parameters stored in the AVR-file and ELP-file. This structure is
 %         identical to the one returned when doing the matlab export in
 %         BESA.
-% 
+
 % Copyright (C) 2014, BESA GmbH
 %
-% File name: load2besa_channels.m
+% This file is part of BESA2MATLAB.
+%
+%    BESA2MATLAB is free software: you can redistribute it and/or modify
+%    it under the terms of the GNU General Public License as published by
+%    the Free Software Foundation, either version 3 of the License, or
+%    (at your option) any later version.
+%
+%    BESA2MATLAB is distributed in the hope that it will be useful,
+%    but WITHOUT ANY WARRANTY; without even the implied warranty of
+%    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+%    GNU General Public License for more details.
+%
+%    You should have received a copy of the GNU General Public License
+%    along with BESA2MATLAB. If not, see <http://www.gnu.org/licenses/>.
 %
 % Author: Andre Waelkens
 % Created: 2014-05-27
