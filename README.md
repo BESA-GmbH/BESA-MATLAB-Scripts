@@ -1,6 +1,6 @@
 [![BESA logo](https://www.besa.de/wp-content/uploads/2014/05/pre_logo.jpeg)](https://www.besa.de/)
 
-# BESA-Matlab-Readers
+# BESA-Matlab-Readers (BESA2MATLAB)
 
 This repository contains a range of MATLAB functions that read exported BESA files into MATLAB.
 
