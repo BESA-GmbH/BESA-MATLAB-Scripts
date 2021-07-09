@@ -12,28 +12,26 @@ function [ EEG ] = besa2eeglab( besa_channels )
 %         A structure that can be used in EEGLAB functinos. 
 % 
 
-
 % Copyright (C) 2019, BESA GmbH
 %
-% File name: BESA_SAVE.m
+% This file is part of BESA2MATLAB.
 %
-% This file is part of MATLAB2BESA.
-%
-%    MATLAB2BESA is free software: you can redistribute it and/or modify
+%    BESA2MATLAB is free software: you can redistribute it and/or modify
 %    it under the terms of the GNU General Public License as published by
 %    the Free Software Foundation, either version 3 of the License, or
 %    (at your option) any later version.
 %
-%    MATLAB2BESA is distributed in the hope that it will be useful,
+%    BESA2MATLAB is distributed in the hope that it will be useful,
 %    but WITHOUT ANY WARRANTY; without even the implied warranty of
 %    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 %    GNU General Public License for more details.
 %
 %    You should have received a copy of the GNU General Public License
-%    along with MATLAB2BESA. If not, see <http://www.gnu.org/licenses/>.
+%    along with BESA2MATLAB. If not, see <http://www.gnu.org/licenses/>.
 %
 % Author: Mateusz Rusiniak
 % Created: 2019-04-23
+
     EEG.setname='Besa export';
     EEG.filename='';
     EEG.filepath='';
