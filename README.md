@@ -6,7 +6,7 @@
 
 The MATLAB interface of BESA Research allows to transfer data directly from BESA Research to MATLAB. This includes raw or averaged data, source waveforms, source models, 3D source images, peak scores, FFT and time-frequency results. The following toolboxes provide some sample scripts that can be used to perform further processing of the transferred BESA Research data in MATLAB.
 
-In case of questions or support requests please fill in our web-based form at https://www.besa.de/support/support-page/
+In case of questions or support requests, please fill in our web-based form at https://www.besa.de/support/support-page/
 
 ## BESA2MATLAB
 
@@ -21,5 +21,5 @@ MATLAB2BESA contains a range of MATLAB functions that export MATLAB data structu
 A set of functions that might be helpful for handling BESA data in MATLAB
 
 + **BesaConnectivityScripts**: A set of functions that enhance usage of BESA Connectivity
-+ **TFPLOT**: A tool for the averaging of Time Frequency data exported from BESA Research (adjustable visualization)
++ **TFplot**: A tool for the averaging of Time Frequency data exported from BESA Research (adjustable visualization)
 + **besa_average_images**: A tool to create an averaged image from distributed source analysis results exported from the BESA Research Source Analysis module
