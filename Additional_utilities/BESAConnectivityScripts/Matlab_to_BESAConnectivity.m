@@ -38,7 +38,7 @@ SamplingRate = 320;
 EpochLength = [-400 1200];
 Baseline = [-400 0];
 ConditionName = 'SimulatedData';
-FilePathName = 'C:\Users\Default\Documents\Export from Matlab\data';
+FilePathName = 'C:\Users\Public\Documents\Export from Matlab\data';
 
 
 %% Channel labels and units
@@ -49,7 +49,7 @@ for ChanIdx=1:NumChannels
     ChannelLabels{ChanIdx} = ['Chan' num2str(ChanIdx)];
     ChannelUnits{ChanIdx} = 'µV'; % 'nAm' 'µV'
     ChannelTypes{ChanIdx} = 'POL'; % 'DipSrc' 'POL' 'EEG' 'MEG'
-end;    
+end    
 
 
 %% Sine waves
@@ -62,18 +62,18 @@ for TrialIdx=1:NumTrials
     for ChanIdx=1:NumChannels
         % Generate sine waves incl. noise
         AmplitudeSignal = 1;
-        AmplitudeNoise = 1;
-        Frequency = 30;
+        AmplitudeNoise = 0.2;
+        Frequency = 5;
         TrialData(ChanIdx, :) = ...
             AmplitudeSignal*sin(2*pi*Frequency*Latencies) + ...
             AmplitudeNoise*randn(size(Latencies));
-    end;    
+    end    
     Data{TrialIdx} = TrialData;
-end;
+end
 
 
 %% Plot data of first trial
-%{
+%%{
 MaxVal = max(max(abs(Data{1})));
 for ChanIdx=1:NumChannels
     subplot(NumChannels, 1, ChanIdx);
@@ -83,7 +83,7 @@ for ChanIdx=1:NumChannels
     plot([0 0], [-MaxVal MaxVal], 'k');
     xlim([Latencies(1) Latencies(end)]);
     ylim([-MaxVal MaxVal]);
-end;
+end
 %}
 
 
@@ -96,10 +96,9 @@ cfgExport.BaselineStart = Baseline(1);
 cfgExport.BaselineEnd   = Baseline(2);
 cfgExport.EpochLength   = EpochLength(2) - EpochLength(1);
 cfgExport.Padding       = 0;
+cfgExport.PaddingExport = 2000;
 cfgExport.ConditionName = ConditionName;
 cfgExport.ChannelLabels = ChannelLabels;
 cfgExport.ChannelUnits  = ChannelUnits;
 cfgExport.ChannelTypes  = ChannelTypes;
-%cfgExport.ChannelCoordinates;
-%cfgExport.ChannelOrientations;
 besa_save2Connectivity(FilePathName, cfgExport, Data);
