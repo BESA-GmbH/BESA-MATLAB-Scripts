@@ -10,16 +10,16 @@ In case of questions or support requests, please fill in our web-based form at h
 
 ## BESA2MATLAB
 
-BESA2MATLAB contains a range of MATLAB functions that read exported BESA files into MATLAB.
+[BESA2MATLAB](https://github.com/BESA-GmbH/BESA-MATLAB-Scripts/releases/latest/download/BESA2MATLAB.zip) contains a range of MATLAB functions that read exported BESA files into MATLAB.
 
 ## MATLAB2BESA
 
-MATLAB2BESA contains a range of MATLAB functions that export MATLAB data structures as ASCII-files in a format that BESA products can read.
+[MATLAB2BESA](https://github.com/BESA-GmbH/BESA-MATLAB-Scripts/releases/latest/download/MATLAB2BESA.zip) contains a range of MATLAB functions that export MATLAB data structures as ASCII-files in a format that BESA products can read.
 
 ## Additional utilities
 
 A set of functions that might be helpful for handling BESA data in MATLAB
 
-+ **BesaConnectivityScripts**: A set of functions that enhance usage of BESA Connectivity
-+ **TFplot**: A tool for the averaging of Time Frequency data exported from BESA Research (adjustable visualization)
-+ **besa_average_images**: A tool to create an averaged image from distributed source analysis results exported from the BESA Research Source Analysis module
++ [BesaConnectivityScripts](https://github.com/BESA-GmbH/BESA-MATLAB-Scripts/releases/latest/download/BesaConnectivityScripts.zip): A set of functions that enhance usage of BESA Connectivity
++ [TFplot](https://github.com/BESA-GmbH/BESA-MATLAB-Scripts/releases/latest/download/TFplot.zip): A tool for the averaging of Time Frequency data exported from BESA Research (adjustable visualization)
++ [besa_average_images](https://github.com/BESA-GmbH/BESA-MATLAB-Scripts/releases/latest/download/besa_average_images.zip): A tool to create an averaged image from distributed source analysis results exported from the BESA Research Source Analysis module
