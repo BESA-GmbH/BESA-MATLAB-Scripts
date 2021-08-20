@@ -1,4 +1,4 @@
-name: Main
+name: Upload assets with a release
 
 # Controls when the workflow will run
 on:
