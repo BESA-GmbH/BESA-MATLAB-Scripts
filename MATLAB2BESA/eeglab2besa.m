@@ -1,4 +1,4 @@
-function besa_channels=eeglab2besa( EEG )
+function besa_channels = eeglab2besa(EEG)
 % EEGLAB2BESA saves EEG struct from EEGLAB to besa_channels struct 
 % which is compatible with BESA Research standard and can be exported to
 % BESA Research by BESA_SAVE funtion if needed
@@ -12,11 +12,8 @@ function besa_channels=eeglab2besa( EEG )
 %     [besa_channels]
 %         BESA standard struct
 % 
-% 
 
 % Copyright (C) 2019, BESA GmbH
-%
-% File name: BESA_SAVE.m
 %
 % This file is part of MATLAB2BESA.
 %
@@ -35,6 +32,7 @@ function besa_channels=eeglab2besa( EEG )
 %
 % Author: Mateusz Rusiniak
 % Created: 2019-04-23
+
     index=strfind(EEG.comments,'Original file: ');
     
     besa_channels.datafile=EEG.comments(index:numel(EEG.comments));
@@ -109,7 +107,6 @@ function besa_channels=eeglab2besa( EEG )
             besa_channels.events(event).latency =(EEG.event(event).latency-1)*1000/EEG.srate;
             besa_channels.events(event).timesincemidnightms=0;
         end
-        
     end
-end
 
+end
