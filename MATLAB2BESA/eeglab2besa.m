@@ -40,13 +40,13 @@ function besa_channels = eeglab2besa(EEG)
     for chan=1:EEG.nbchan
         besa_channels.channeltypes{chan}=EEG.chanlocs(chan).type;
         besa_channels.channellabels{chan}=EEG.chanlocs(chan).labels;
-        besa_channels.channelunits{chan}='µV';
+        besa_channels.channelunits{chan}='ÂµV';
         if (~isempty(EEG.chanlocs(chan).Y)&&...
             ~isempty(EEG.chanlocs(chan).X)&&...
             ~isempty(EEG.chanlocs(chan).Z))
-            besa_channels.channelcoordinates(chan,1)=- EEG.chanlocs(chan).Y;
-            besa_channels.channelcoordinates(chan,2)=- EEG.chanlocs(chan).X;
-            besa_channels.channelcoordinates(chan,3)=- EEG.chanlocs(chan).Z;
+            besa_channels.channelcoordinates(chan,1)= EEG.chanlocs(chan).X;
+            besa_channels.channelcoordinates(chan,2)= EEG.chanlocs(chan).Y;
+            besa_channels.channelcoordinates(chan,3)= EEG.chanlocs(chan).Z;
         else
              besa_channels.channelcoordinates(chan,1:3)=0;
         end    
