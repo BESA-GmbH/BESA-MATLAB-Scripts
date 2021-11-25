@@ -158,7 +158,7 @@ function  besa_save(besa_channels,filename)
                         besa_channels.channelcoordinates(chan,1),...
                         besa_channels.channelcoordinates(chan,3));
     end
-    besa_save2Elp(path,[file '.elp'],sc,besa_channels.channellabels',besa_channels.channeltypes');
+    besa_save2Elp(path,[file '.elp'],sc,besa_channels.channellabels',char(besa_channels.channeltypes'));
     
 
 
