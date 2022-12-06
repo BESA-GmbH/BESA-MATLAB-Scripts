@@ -130,6 +130,18 @@ elseif strcmp(image.Imagetype,'Minimum Norm')
       h = fgetl(fp); image.RegularizationValue = h(25:end);
       h = fgetl(fp); image.LaplacianType = h(25:end);
       
+  elseif(strcmp(image.Method,'Cortical CLARA'))
+      
+      h = fgetl(fp); image.DepthWeighting = h(25:end);
+      h = fgetl(fp); image.RegularizationType = h(25:end);
+      h = fgetl(fp); image.RegularizationValue = h(25:end);
+      h = fgetl(fp); image.LaplacianType = h(25:end);
+      h = fgetl(fp); image.AutomaticIterations = h(25:end);
+      h = fgetl(fp); image.NumberOfIterations = h(25:end);
+      h = fgetl(fp); image.RegularizeIterations = h(25:end);
+      h = fgetl(fp); image.IterationsRegValue = h(25:end);
+      h = fgetl(fp); image.ImageClipping = h(25:end);
+      
   end
   
   fgetl(fp);
