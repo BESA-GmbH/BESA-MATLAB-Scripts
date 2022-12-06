@@ -63,7 +63,7 @@ if(fp >= 3)
         end
         
         % Read event/trigger time and code
-        EventTimeCode = sscanf(CurrentLine, '%d', 3);
+        EventTimeCode = sscanf(CurrentLine, '%f', 3);
         if EventTimeCode(2) == 41
             % New segment event
             Events{LineCounter}.Time = EventTimeCode(1);
