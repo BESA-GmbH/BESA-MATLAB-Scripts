@@ -1,4 +1,4 @@
-function status = besa_save2Evt2(file_path, file_name, event_matrix)
+function status = besa_save2Evt2(file_path, file_name, Events)
 % BESA_SAVE2AEVT2 writes events into BESA-compatible ASCII file format 
 %
 % Parameters:
@@ -8,9 +8,15 @@ function status = besa_save2Evt2(file_path, file_name, event_matrix)
 %     [file_name]
 %         The name of the file where the output should be written.
 %
-%     [event_matrix]
-%         A matrix containing the event information exported from BESA 
-%         and imported into Matlab using the function besaReadevt. 
+%     [Events]
+%         A cell array containing the event information exported from BESA 
+%		  and imported into MATLAB using the function readBESAevt.
+%		  Each event is stored as one entry in the cell array. The members  
+%		  of each event are saved in the following variables:
+%         	Tmu (time in microseconds), Code (event code), 
+%			TriNo (trigger number) and Comnt (comment).
+%         Old format: A matrix containing the event information 
+%		  (event_matrix).
 %
 % Return:
 %     [status] 
@@ -39,9 +45,6 @@ function status = besa_save2Evt2(file_path, file_name, event_matrix)
 
 status = 1;
 
-NumEvents = size(event_matrix, 1);
-NumParams = size(event_matrix, 2);
-
 filename = fullfile(file_path, file_name);
 fp = fopen(filename, 'w');
 
@@ -49,25 +52,53 @@ fp = fopen(filename, 'w');
 % standard output (the screen), and standard error, respectively. When 
 % fopen successfully opens a file, it returns a file identifier greater 
 % than or equal to 3.
-if(fp >= 3)
+if (fp >= 3)
     
     % Write the first line of the header.
     fprintf(fp, 'Tmu         	Code	TriNo	Comnt\n');
     
-    % Write the data matrix to the file.
-for i=1:NumEvents
-    
-    for j=1:NumParams
+    if ismatrix(Events) && ~iscell(Events)
 
-        fprintf(fp, '%d\t\t%d\t%d ', event_matrix(i, j));
+		NumEvents = size(Events, 1);
+		NumParams = size(Events, 2);
+		
+        % Write the data matrix to the file.
+        for i = 1:NumEvents
 
+            for j = 1:NumParams
+                fprintf(fp, '%.0f\t\t%d\t%d ', Events(i, j));
+            end
+			
+            fprintf(fp, '\n');
+			
+        end
+		
+    elseif iscell(Events)
+        
+		% Write the data cell to the file.
+        for i = 1:length(Events)
+		
+            if isfield(Events{i}, 'Comment')
+                fprintf(fp, '%.0f\t\t%d\t%d\t%s ', ...
+                    Events{i}.Time, Events{i}.Code, Events{i}.TriNo, ...
+					Events{i}.Comment);
+            else
+                fprintf(fp, '%.0f\t\t%d\t%d ', ...
+                    Events{i}.Time, Events{i}.Code, Events{i}.TriNo);
+            end
+			
+            fprintf(fp, '\n');
+			
+        end
+		
+    else
+	
+    	status = -1;
+        disp('Error! Invalid data type.')
+		
     end
-    
-    fprintf(fp, '\n');
-    
-end
 
-fclose(fp);
+    fclose(fp);
     
 else
     
@@ -75,7 +106,3 @@ else
     disp('Error! Invalid file identifier.')
     
 end
-
-
-
-
