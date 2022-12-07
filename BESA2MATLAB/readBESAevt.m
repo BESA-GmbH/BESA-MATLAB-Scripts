@@ -9,10 +9,10 @@ function Events = readBESAevt(filename)
 % 
 % Return:
 %     [Events] 
-%         A struct containing the events from the file. Ech event is stored
-%         as one entry in the struct. The members of each event are saved
-%         in the following variables:
-%         Time, Code, TriNo and Comment.
+%         A cell array containing the events from the file. Each event is 
+%         stored as one entry in the cell array. The members of each event  
+%         are saved in the following variables:
+%         	Time, Code, TriNo and Comment.
 
 % Copyright (C) 2015, BESA GmbH
 %
@@ -45,7 +45,7 @@ fp = fopen(filename, 'r');
 % standard output (the screen), and standard error, respectively. When 
 % fopen successfully opens a file, it returns a file identifier greater 
 % than or equal to 3.
-if(fp >= 3)
+if (fp >= 3)
     
     % Get the first line of the file. It looks something like that:
     % Tmu         	Code	TriNo	Comnt
@@ -58,41 +58,62 @@ if(fp >= 3)
         CurrentLine = fgetl(fp);
         
         % Check if end of file.
-        if(~ischar(CurrentLine))            
+        if (~ischar(CurrentLine))
             break;            
         end
         
         % Read event/trigger time and code
         EventTimeCode = sscanf(CurrentLine, '%f', 3);
+		
         if EventTimeCode(2) == 41
+		
             % New segment event
             Events{LineCounter}.Time = EventTimeCode(1);
             Events{LineCounter}.Code = EventTimeCode(2);
-            Events{LineCounter}.TriNo= -1;
+            Events{LineCounter}.TriNo = -1;
+			
             if length(EventTimeCode) > 2
                 Events{LineCounter}.Comment = ...
                     CurrentLine(strfind(CurrentLine, EventTimeCode(3)):end);
-            end;
+            end
+			
         elseif EventTimeCode(2) == 1
+		
             % Trigger event
             Events{LineCounter}.Time = EventTimeCode(1);
             Events{LineCounter}.Code = EventTimeCode(2);
-            Events{LineCounter}.TriNo= EventTimeCode(3);
+            Events{LineCounter}.TriNo = EventTimeCode(3);
             
             % Set comment
-            EvtComment= CurrentLine(find(isletter(CurrentLine), 1):end);
+            EvtComment = CurrentLine(find(isletter(CurrentLine), 1):end);
             Events{LineCounter}.Comment = deblank(EvtComment);
+			
+		elseif EventTimeCode(2) == 31 || EventTimeCode(2) == 32
+		
+			% Epoch event (31: Eoch on, 32: Eoch off)
+            Events{LineCounter}.Time = EventTimeCode(1);
+            Events{LineCounter}.Code = EventTimeCode(2);
+            Events{LineCounter}.TriNo = 0;
+			
+			% Set comment
+            EvtComment = CurrentLine(find(isletter(CurrentLine), 1):end);
+            Events{LineCounter}.Comment = deblank(EvtComment);
+			
         else
+		
             Events{LineCounter}.Time = -1;
             Events{LineCounter}.Code = -1;
-            Events{LineCounter}.TriNo= -1;
-        end;              
+            Events{LineCounter}.TriNo = -1;
+			
+        end
         
         % Increment line counter
-        LineCounter = LineCounter + 1;        
+        LineCounter = LineCounter + 1;
     end
         
-else    
+else
+
     Events = {};
-    disp('Error! Invalid file identifier.')    
+    disp('Error! Invalid file identifier.')
+	
 end
