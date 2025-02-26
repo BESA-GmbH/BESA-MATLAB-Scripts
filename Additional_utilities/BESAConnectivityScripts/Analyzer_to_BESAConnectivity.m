@@ -18,6 +18,8 @@
 %
 % Author: Robert Spangler and Mateusz Rusiniak
 % Created: 2023-07-26
+%
+% 2024-08-09 EPL Edits to automate interactively request locations and filenames, raise BESA Connectivity directly
 
 
 % Clean up
@@ -25,7 +27,8 @@
 
 
 %% Add toolboxes
-addpath 'C:\Matlab Toolboxes\MATLAB2BESA';
+%addpath 'C:\Matlab Toolboxes\MATLAB2BESA';
+addpath uigetdir(pwd, 'Please specify your local MATLAB2BESA directory');
 
 
 %% Parameters
@@ -35,7 +38,11 @@ SamplingRate = EEG.srate;
 EpochLength = [EEGTime(1) EEGTime(end)];
 Baseline = [EEGTime(1) 0];
 ConditionName = 'BAtoBESA';
-FilePathName = [pwd '\BAtoBESA.generic'];
+%FilePathName = [pwd '\BAtoBESA.generic'];
+FileDirectory = uigetdir(pwd, 'Please specify the directory where the exported BESA file should be saved');
+FilePathName = [FileDirectory filesep FileName '.generic'];  %Semi-automatic naming of the output file
+FilePathName = uigetfile(FilePathName, 'Please specify the name of the output file you would like to save');
+BESAConnectivity = 'C:\Program Files\BESA\Connectivity_2_0_x64\BesaConnectivity.exe';    % Specify the correct path to the BESA Connectivity Executable file
 
 
 %% Channel labels and units
@@ -51,7 +58,8 @@ for ChanIdx = 1:NumChannels
         [ChannelCoordinates(ChanIdx,1),...
          ChannelCoordinates(ChanIdx,2),...
          ChannelCoordinates(ChanIdx,3)] = besa_transformCartesian2Spherical(...
-            EEG.chanlocs(ChanIdx).Y,...
+%            EEG.chanlocs(ChanIdx).Y,... %if Left/Right is flipped, then use this instead of the line below it.
+            -EEG.chanlocs(ChanIdx).Y,... 
             EEG.chanlocs(ChanIdx).X,...
             EEG.chanlocs(ChanIdx).Z);
     else
@@ -106,3 +114,7 @@ cfgExport.ChannelUnits  = ChannelUnits;
 cfgExport.ChannelTypes  = ChannelTypes;
 cfgExport.ChannelCoordinates = ChannelCoordinates;
 besa_save2Connectivity(FilePathName, cfgExport, Data);
+
+disp('Successfully exported data...');
+disp('Now raising BESA Connectivity...');
+status = system(BESAConnectivity);
